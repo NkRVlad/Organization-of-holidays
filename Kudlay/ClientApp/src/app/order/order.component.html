@@ -1,0 +1,43 @@
+<app-main-admin ></app-main-admin>
+<h3>Заказы</h3>
+
+<div>
+    <pagination-controls  style="margin-left: 40%;"  class="pagination" (pageChange)="onPageChange($event)"></pagination-controls>
+</div>
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <td>Ид</td>
+            <td>Имя</td>
+            <td>Номер телефона</td>
+            <td>Город</td>
+            <td>Улица</td>
+            <td>Дата</td>
+            <td>Начало</td>
+            <td>Продолжительность</td>
+            <td>Цена</td>
+            <td>Категория</td>
+            <td>Статус</td>
+            <td>Переместить</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let o of order | paginate: { itemsPerPage: 30, currentPage: pageNumber, totalItems:Count }">
+
+                <td>{{o.id}}</td>
+                <td>{{o.name}}</td>
+                <td>{{o.phone}}</td>
+                <td>{{o.city}}</td>
+                <td>{{o.street}}</td>
+                <td>{{o.date | date: 'mediumDate'}}</td>
+                <td>{{o.time}}</td>
+                <td>{{o.duration}}</td>
+                <td>{{o.price}}</td>
+                <td>{{o.categoryName}}</td>
+                <td>{{o.statusName}}</td>
+                <td>
+                    <button class="btn btn-success" (click)="move(o.id)">В ожидание</button>
+                </td>
+        </tr>
+    </tbody>
+</table>

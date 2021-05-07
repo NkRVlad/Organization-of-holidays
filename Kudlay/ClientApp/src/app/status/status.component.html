@@ -1,0 +1,28 @@
+<app-main-admin></app-main-admin>
+<h3>Статусы</h3>
+<div style="margin-top: 30px; margin-bottom: 15px;">
+    <button class="btn btn-primary" (click)="open_create()">Добавить</button>
+</div>
+<div>
+    <pagination-controls  style="margin-left: 40%;"  class="pagination" (pageChange)="onPageChange($event)"></pagination-controls>
+</div>
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <td>Ид</td>
+            <td>Название</td>
+            <td>Настройки</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of status | paginate: { itemsPerPage: 30, currentPage: pageNumber, totalItems:Count }">
+
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="delete(s.id)">Удалить</button>
+                </td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,23 @@
+<h2>Добавить категорию</h2>
+<div class="table-content">
+    <div class="add-order">
+        <form #CategoryForm="ngForm" (ngSubmit)="create(CategoryForm)"> 
+            <div>
+                <label>Категория</label>
+                <input type="text" class="form-control" name="name" ngModel  placeholder="Введите название статуса">
+            </div>
+            <div>
+                <label>Минимальная прододжительность</label>
+                <input [ngModel]="3" min="3" max="10" type="number" class="form-control" name="minTime" ngModel  placeholder="Введите минимальную продолжительность">
+            </div>
+            <div>
+                <label>Цена</label>
+                <input [ngModel]="500" min="500" max="1000" type="number" class="form-control" name="price" ngModel  placeholder="Введите цену за час">
+            </div>
+            <div style="margin-top: 30px;">
+                <input  type="submit" value="Сохранить"  class="btn btn-primary" />
+                <input style="margin-left: 5%" type="button" value="Отмена" (click)="cancel()" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div> 

@@ -1,0 +1,19 @@
+<div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+  
+    <div>
+      <h2>Вход</h2>
+        <br />
+        <label for="userName">Логин</label>
+        <input type="text" id="userName" name="userName" placeholder="Введите логин" ngModel class="form-control" required autofocus />
+        <br />
+        <br />
+        <label for="userPassword">Пароль</label>
+        <input type="text" id="userPassword" name="userPassword" placeholder="Введите пароль" ngModel class="form-control" required  />
+        <br />
+        <br />
+        <button class="btm btn-lg btn-primary btn-block" type="submit">Вход</button>
+        <br />
+      </div>
+    </form>
+  </div>

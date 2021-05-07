@@ -1,0 +1,70 @@
+<h2>Добавить заказ</h2>
+<div class="table-content">
+    <div class="add-order">
+        <form  [formGroup]="test"  #CategoryForm="ngForm" (ngSubmit)="create(CategoryForm)"> 
+            <div style="margin-bottom: 20px;">
+                <label>Имя</label>
+                <input formControlName="name" type="text" class="form-control" name="name" ngModel  placeholder="Введите имя" autofocus>
+                <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                    <div>Пустая строка !</div>
+                </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>Номер телефона</label>
+                <input formControlName="phone" type="text" class="form-control" name="phone" ngModel  placeholder="Введите номер телефона" >
+                
+                <div *ngIf="f.phone.touched && f.phone.invalid" class="alert alert-danger">
+                    <div>Введите 10 значений. Формат: 0991234567</div>
+                </div>
+            </div>
+            <div>
+                <label>Город</label>
+                <input formControlName="city"  type="text" class="form-control" name="city" ngModel  placeholder="Введите город">
+                <div *ngIf="f.city.touched && f.city.invalid" class="alert alert-danger">
+                    <div>Пустая строка !</div>
+                </div>
+            </div>
+            <div>
+                <label>Улица и номер дома</label>
+                <input formControlName="street"  type="text" class="form-control" name="street" ngModel  placeholder="Введите улицу и номер дома">
+                <div *ngIf="f.street.touched && f.street.invalid" class="alert alert-danger">
+                    <div>Пустая строка !</div>
+                </div>
+            </div>
+            <div>
+                <label>Дата</label>
+                <input  formControlName="date"  type="date" class="form-control" name="date" ngModel>
+            </div>
+            <div>
+                <label>Начало</label>
+                <input  formControlName="time"  type="time" min="10:00" max="18:00" class="form-control" name="time" ngModel>
+            </div>
+            <div>
+                <label>Продолжительность</label>
+                <input formControlName="duration" [ngModel]='3' max="10" min="3" type="number" class="form-control" name="duration" ngModel  placeholder="Продолжительность праздника">
+                <div *ngIf="f.duration.touched && f.duration.invalid" class="alert alert-danger">
+                    <div>Пустая строка !</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="StatusId">Статус</label>
+                    <select formControlName="status" class="form-control" ngModel name="status">
+                        <option *ngFor="let s of status"  [ngValue]="s.id" selected="Выбор статуса">{{s.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="CategoryId">Категория</label>
+                    <select formControlName="category" class="form-control"  ngModel name="category">
+                        <option  *ngFor="let c of category" [ngValue]="c.id" selected="Выбор категории">{{c.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <input  type="submit" value="Сохранить" class="btn btn-primary" />
+                <input style="margin-left: 5%" type="button" value="Отмена" (click)="cancel()" class="btn btn-danger" />
+            </div>
+           
+        </form>
+    </div>
+</div> 

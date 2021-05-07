@@ -1,0 +1,47 @@
+<app-main-admin></app-main-admin>
+<h3>Отменённые заказы</h3>
+<div style="margin-top: 10px; margin-bottom: 15px;">
+    <button style=" margin-right: 15px;"  class="btn btn-primary" (click)="loadCanceledOrder()">Сброс</button>
+</div>
+<div style="margin-top: 20px; margin-bottom: 15px;">
+    <form class="form-inline" #searchForm="ngForm" (ngSubmit)="search(searchForm)">
+        <input style="width: 290px;" ngModel name="textSearch" class="form-control mr-sm-2" type="search" placeholder="Введите имя или номер телофна" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+    </form>
+</div>
+<div>
+    <pagination-controls  style="margin-left: 40%;"  class="pagination" (pageChange)="onPageChange($event)"></pagination-controls>
+</div>
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <td>Ид</td>
+            <td>Имя</td>
+            <td>Номер телефона</td>
+            <td>Город</td>
+            <td>Улица</td>
+            <td>Дата</td>
+            <td>Начало</td>
+            <td>Продолжительность</td>
+            <td>Цена</td>
+            <td>Категория</td>
+            <td>Статус</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let o of order | paginate: { itemsPerPage: 30, currentPage: pageNumber, totalItems:Count }">
+
+                <td>{{o.id}}</td>
+                <td>{{o.name}}</td>
+                <td>{{o.phone}}</td>
+                <td>{{o.city}}</td>
+                <td>{{o.street}}</td>
+                <td>{{o.date | date: 'mediumDate'}}</td>
+                <td>{{o.time}}</td>
+                <td>{{o.duration}}</td>
+                <td>{{o.price}}</td>
+                <td>{{o.categoryName}}</td>
+                <td>{{o.statusName}}</td>
+        </tr>
+    </tbody>
+</table>
